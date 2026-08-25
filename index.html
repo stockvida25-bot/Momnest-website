@@ -7,31 +7,39 @@
 <title>MomNest | Premium Digital Products for Moms</title>
 
 <meta name="description"
-content="MomNest creates thoughtfully designed digital planners, journals and activity kits for modern moms and little ones.">
+content="MomNest creates beautifully designed digital planners, journals and activity kits for modern moms and little ones.">
 
 <meta name="theme-color" content="#fff8f5">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
 
 :root{
-  --cream:#fffaf7;
+  --cream:#fff9f6;
+  --cream2:#fff3ef;
   --white:#ffffff;
-  --dark:#30262b;
-  --text:#55484e;
-  --muted:#8a7b82;
-  --rose:#c8798c;
-  --rose-light:#f6e4e8;
-  --sage:#dcebe3;
-  --gold:#d1aa60;
-  --line:#eee1e3;
-  --shadow:0 20px 60px rgba(48,38,43,.10);
+  --dark:#2f2529;
+  --text:#594c52;
+  --muted:#8b7d83;
+  --rose:#c9798d;
+  --rose-dark:#a95c70;
+  --rose-light:#f7e3e8;
+  --sage:#dfeee7;
+  --gold:#cda85e;
+  --line:#eadcdf;
+  --shadow:0 20px 60px rgba(47,37,41,.10);
+  --shadow2:0 10px 30px rgba(47,37,41,.08);
+  --radius:24px;
 }
 
 *{
+  box-sizing:border-box;
   margin:0;
   padding:0;
-  box-sizing:border-box;
 }
 
 html{
@@ -41,37 +49,42 @@ html{
 body{
   font-family:"DM Sans",sans-serif;
   background:var(--cream);
-  color:var(--dark);
+  color:var(--text);
   line-height:1.6;
 }
 
 a{
-  text-decoration:none;
   color:inherit;
+  text-decoration:none;
 }
 
 button{
   font-family:inherit;
 }
 
-.container{
-  width:min(1160px,90%);
-  margin:auto;
+img{
+  max-width:100%;
+  display:block;
 }
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 header{
   position:sticky;
   top:0;
   z-index:1000;
-  background:rgba(255,250,247,.92);
-  backdrop-filter:blur(15px);
-  border-bottom:1px solid var(--line);
+  background:rgba(255,249,246,.92);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(234,220,223,.7);
 }
 
 .navbar{
+  max-width:1200px;
+  margin:auto;
   height:78px;
+  padding:0 24px;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -83,291 +96,439 @@ header{
   gap:11px;
 }
 
-.logo-icon{
-  width:43px;
-  height:43px;
-  border-radius:50%;
-  background:linear-gradient(135deg,#75b7a9,#e88d79,#e0b459);
+.logo-mark{
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#f1c7d0,#d992a5);
   display:flex;
   align-items:center;
   justify-content:center;
-  color:white;
   font-size:21px;
-  box-shadow:0 8px 25px rgba(201,121,140,.22);
+  box-shadow:0 8px 20px rgba(201,121,141,.22);
 }
 
-.logo-name{
-  font-size:18px;
+.logo-text{
+  font-family:"Playfair Display",serif;
+  font-size:25px;
   font-weight:700;
-  letter-spacing:2px;
+  color:var(--dark);
+  letter-spacing:.2px;
 }
 
-.logo-tagline{
-  display:block;
-  font-size:7px;
-  letter-spacing:1.5px;
-  color:var(--muted);
+.logo-text span{
+  color:var(--rose);
 }
 
-nav{
+.desktop-nav{
   display:flex;
-  gap:27px;
   align-items:center;
+  gap:30px;
 }
 
-nav a{
-  font-size:12px;
+.desktop-nav a{
+  font-size:14px;
   font-weight:600;
   color:var(--text);
-  transition:.2s;
+  transition:.25s;
 }
 
-nav a:hover{
+.desktop-nav a:hover{
   color:var(--rose);
+}
+
+.nav-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.cart-btn{
+  border:0;
+  background:var(--white);
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  cursor:pointer;
+  box-shadow:var(--shadow2);
+  position:relative;
+  font-size:18px;
+}
+
+.cart-count{
+  position:absolute;
+  top:-3px;
+  right:-3px;
+  width:19px;
+  height:19px;
+  border-radius:50%;
+  background:var(--rose);
+  color:white;
+  font-size:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
 }
 
 .menu-btn{
   display:none;
+  width:44px;
+  height:44px;
   border:0;
-  background:none;
-  font-size:25px;
+  background:var(--white);
+  border-radius:14px;
+  font-size:22px;
   cursor:pointer;
+  box-shadow:var(--shadow2);
 }
 
-.nav-cta{
-  background:var(--dark);
-  color:white;
-  padding:11px 18px;
-  border-radius:30px;
-  font-size:11px;
-  font-weight:700;
+.mobile-menu{
+  display:none;
+  padding:15px 24px 22px;
+  border-top:1px solid var(--line);
+  background:var(--cream);
 }
 
-/* HERO */
+.mobile-menu.active{
+  display:block;
+}
+
+.mobile-menu a{
+  display:block;
+  padding:12px 0;
+  font-weight:600;
+  border-bottom:1px solid var(--line);
+}
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
-  min-height:690px;
+  max-width:1200px;
+  margin:auto;
+  min-height:650px;
+  padding:80px 24px 70px;
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:1.05fr .95fr;
   align-items:center;
-  gap:70px;
-  padding:70px 0;
+  gap:60px;
 }
 
 .eyebrow{
-  color:var(--rose);
-  font-size:10px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 14px;
+  background:var(--rose-light);
+  color:var(--rose-dark);
+  border-radius:50px;
+  font-size:12px;
   font-weight:700;
-  letter-spacing:2.4px;
+  letter-spacing:.7px;
+  text-transform:uppercase;
+  margin-bottom:22px;
 }
 
 .hero h1{
   font-family:"Playfair Display",serif;
-  font-size:clamp(48px,6vw,78px);
-  line-height:1.04;
-  margin:17px 0 22px;
+  font-size:clamp(48px,6vw,76px);
+  line-height:1.02;
+  color:var(--dark);
+  margin-bottom:24px;
 }
 
-.hero h1 em,
-.section-title em{
+.hero h1 em{
   color:var(--rose);
   font-style:normal;
 }
 
-.hero-description{
-  max-width:580px;
-  font-size:16px;
-  color:var(--text);
+.hero p{
+  max-width:570px;
+  font-size:17px;
+  color:var(--muted);
+  margin-bottom:32px;
 }
 
 .hero-buttons{
   display:flex;
-  gap:15px;
-  margin-top:30px;
-  align-items:center;
+  gap:13px;
   flex-wrap:wrap;
 }
 
 .btn{
-  display:inline-block;
-  padding:14px 24px;
-  border-radius:30px;
-  font-size:12px;
-  font-weight:700;
-  border:none;
+  border:0;
+  padding:14px 22px;
+  border-radius:14px;
   cursor:pointer;
+  font-weight:700;
+  font-size:14px;
+  transition:.25s;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
 }
 
 .btn-primary{
-  background:var(--rose);
-  color:white;
-  box-shadow:0 12px 30px rgba(200,121,140,.28);
-}
-
-.btn-dark{
   background:var(--dark);
   color:white;
+  box-shadow:0 12px 30px rgba(47,37,41,.18);
 }
 
-.btn-outline{
-  border:1px solid var(--dark);
+.btn-primary:hover{
+  transform:translateY(-2px);
+  background:#44343b;
+}
+
+.btn-secondary{
+  background:white;
   color:var(--dark);
-  background:transparent;
+  border:1px solid var(--line);
 }
 
-.hero-note{
-  display:flex;
-  gap:18px;
-  flex-wrap:wrap;
-  margin-top:27px;
-  color:#638071;
-  font-size:10px;
-  font-weight:600;
+.btn-secondary:hover{
+  transform:translateY(-2px);
+  border-color:var(--rose);
+  color:var(--rose-dark);
 }
 
-/* HERO VISUAL */
-
-.hero-art{
-  min-height:500px;
+.hero-card{
   position:relative;
+  min-height:510px;
+  border-radius:40px;
+  background:linear-gradient(145deg,#f9e8eb,#f4ddd9 45%,#e7eee8);
+  overflow:hidden;
+  box-shadow:var(--shadow);
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
 }
 
-.circle{
-  position:absolute;
+.hero-card:before{
+  content:"";
+  width:320px;
+  height:320px;
+  background:rgba(255,255,255,.5);
   border-radius:50%;
+  position:absolute;
+  top:-100px;
+  right:-80px;
 }
 
-.circle.one{
-  width:440px;
-  height:440px;
-  background:#f7e5e9;
+.hero-card:after{
+  content:"";
+  width:230px;
+  height:230px;
+  background:rgba(201,121,141,.12);
+  border-radius:50%;
+  position:absolute;
+  bottom:-70px;
+  left:-50px;
 }
 
-.circle.two{
-  width:160px;
-  height:160px;
-  background:var(--sage);
-  right:0;
-  bottom:20px;
-}
-
-.paper{
+.mockup{
   position:relative;
   z-index:2;
-  width:290px;
-  height:400px;
+  width:280px;
+  min-height:370px;
+  background:#fff;
+  border-radius:18px;
+  padding:28px;
+  box-shadow:0 25px 60px rgba(47,37,41,.18);
+  transform:rotate(-5deg);
+}
+
+.mockup-small{
+  position:absolute;
+  z-index:3;
+  right:35px;
+  bottom:60px;
+  width:185px;
   background:white;
-  padding:30px;
-  border-radius:8px;
-  box-shadow:var(--shadow);
-  transform:rotate(4deg);
+  border-radius:18px;
+  padding:20px;
+  box-shadow:0 20px 45px rgba(47,37,41,.18);
+  transform:rotate(7deg);
 }
 
-.paper small{
-  font-size:8px;
-  letter-spacing:2px;
-  font-weight:700;
-}
-
-.paper h2{
+.mockup-brand{
   font-family:"Playfair Display",serif;
-  font-size:31px;
-  line-height:1.1;
-  margin:48px 0 25px;
+  color:var(--rose);
+  font-size:16px;
+  margin-bottom:22px;
 }
 
-.paper-line{
-  padding:9px 0;
-  border-bottom:1px solid var(--line);
-  font-size:10px;
-  color:var(--muted);
-}
-
-.paper-quote{
+.mockup h3{
   font-family:"Playfair Display",serif;
-  font-size:20px;
+  color:var(--dark);
+  font-size:30px;
+  line-height:1.15;
+  margin-bottom:20px;
+}
+
+.mock-line{
+  height:10px;
+  border-radius:20px;
+  background:#f1e5e7;
+  margin:11px 0;
+}
+
+.mock-line.short{
+  width:65%;
+}
+
+.mock-boxes{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
   margin-top:25px;
 }
 
-.float-card{
-  position:absolute;
-  z-index:4;
-  right:0;
-  top:60px;
+.mock-box{
+  height:55px;
+  background:#f8eef0;
+  border-radius:10px;
+}
+
+.mockup-small h4{
+  font-family:"Playfair Display",serif;
+  color:var(--dark);
+  font-size:20px;
+  margin-bottom:12px;
+}
+
+/* =========================
+   TRUST
+========================= */
+
+.trust{
   background:white;
-  padding:14px 19px;
-  border-radius:14px;
-  box-shadow:var(--shadow);
-  font-size:10px;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
 }
 
-.float-card b{
-  display:block;
-  margin-top:3px;
-}
-
-/* STRIP */
-
-.brand-strip{
-  background:var(--dark);
-  color:white;
-  padding:18px 0;
-}
-
-.brand-strip-inner{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+.trust-inner{
+  max-width:1100px;
+  margin:auto;
+  padding:23px 24px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
   gap:20px;
 }
 
-.brand-strip span{
-  font-size:9px;
-  letter-spacing:1.8px;
-  opacity:.85;
+.trust-item{
+  text-align:center;
 }
 
-.brand-strip strong{
-  font-size:11px;
+.trust-item strong{
+  display:block;
+  color:var(--dark);
+  font-size:14px;
+  margin-bottom:3px;
 }
 
-/* SECTIONS */
+.trust-item span{
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* =========================
+   GENERAL SECTIONS
+========================= */
 
 .section{
-  padding:105px 0;
+  max-width:1200px;
+  margin:auto;
+  padding:95px 24px;
 }
 
-.section-heading{
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  gap:40px;
-  margin-bottom:48px;
-}
-
-.section-title{
-  font-family:"Playfair Display",serif;
-  font-size:52px;
-  line-height:1.1;
-  margin-top:10px;
-}
-
-.section-intro{
-  max-width:410px;
-  color:var(--muted);
-  font-size:13px;
-}
-
-.center{
+.section-head{
   text-align:center;
   max-width:700px;
-  margin:auto;
+  margin:0 auto 50px;
 }
 
-/* PRODUCTS */
+.section-head .eyebrow{
+  margin-bottom:15px;
+}
+
+.section-head h2{
+  font-family:"Playfair Display",serif;
+  font-size:46px;
+  line-height:1.1;
+  color:var(--dark);
+  margin-bottom:14px;
+}
+
+.section-head p{
+  color:var(--muted);
+}
+
+/* =========================
+   CATEGORIES
+========================= */
+
+.categories{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.category{
+  padding:28px;
+  border-radius:24px;
+  min-height:190px;
+  transition:.3s;
+  border:1px solid var(--line);
+}
+
+.category:hover{
+  transform:translateY(-5px);
+  box-shadow:var(--shadow2);
+}
+
+.category:nth-child(1){
+  background:#f9e7eb;
+}
+
+.category:nth-child(2){
+  background:#e9f1ec;
+}
+
+.category:nth-child(3){
+  background:#f7efd9;
+}
+
+.category:nth-child(4){
+  background:#eee8f3;
+}
+
+.category-icon{
+  font-size:31px;
+  margin-bottom:18px;
+}
+
+.category h3{
+  font-family:"Playfair Display",serif;
+  font-size:23px;
+  color:var(--dark);
+  margin-bottom:7px;
+}
+
+.category p{
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* =========================
+   PRODUCTS
+========================= */
+
+.shop{
+  background:#fff;
+}
 
 .products{
   display:grid;
@@ -376,392 +537,617 @@ nav a:hover{
 }
 
 .product{
-  background:white;
+  background:var(--cream);
   border:1px solid var(--line);
-  border-radius:22px;
+  border-radius:26px;
   overflow:hidden;
-  transition:.25s;
+  transition:.3s;
 }
 
 .product:hover{
-  transform:translateY(-7px);
+  transform:translateY(-6px);
   box-shadow:var(--shadow);
 }
 
-.product-image{
-  height:270px;
-  padding:23px;
+.product-cover{
+  min-height:245px;
+  padding:28px;
   display:flex;
-  flex-direction:column;
-  justify-content:space-between;
+  align-items:flex-end;
+  position:relative;
+  overflow:hidden;
 }
 
-.product-image small{
-  font-size:8px;
-  letter-spacing:2px;
+.product-cover:before{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:180px;
+  background:rgba(255,255,255,.35);
+  border-radius:50%;
+  right:-55px;
+  top:-55px;
+}
+
+.cover-pink{
+  background:#f4d9df;
+}
+
+.cover-sage{
+  background:#dcebe3;
+}
+
+.cover-gold{
+  background:#f0e4c7;
+}
+
+.cover-lavender{
+  background:#e7e0ef;
+}
+
+.product-mini{
+  position:relative;
+  z-index:2;
+  width:175px;
+  height:190px;
+  background:white;
+  border-radius:12px;
+  padding:20px;
+  box-shadow:0 15px 30px rgba(47,37,41,.12);
+}
+
+.product-mini small{
+  color:var(--rose);
   font-weight:700;
-}
-
-.product-image strong{
-  font-family:"Playfair Display",serif;
-  font-size:31px;
-  line-height:1.05;
-}
-
-.product-image span{
   font-size:9px;
-  color:var(--muted);
+  text-transform:uppercase;
 }
 
-.blush{background:#f7e6eb}
-.sage{background:#dfebe4}
-.peach{background:#f5dfd5}
-.lilac{background:#ebe5f1}
-.gold-bg{background:#f4ead0}
-.blue{background:#e2edf1}
+.product-mini h4{
+  font-family:"Playfair Display",serif;
+  font-size:20px;
+  line-height:1.1;
+  color:var(--dark);
+  margin-top:18px;
+}
+
+.product-mini .mini-line{
+  height:6px;
+  background:#eee4e6;
+  margin-top:12px;
+  border-radius:10px;
+}
 
 .product-info{
-  padding:22px;
+  padding:23px;
 }
 
-.badge{
-  display:inline-block;
-  padding:5px 9px;
-  border-radius:20px;
-  background:var(--rose-light);
-  color:var(--rose);
-  font-size:8px;
-  font-weight:800;
-  letter-spacing:.5px;
+.product-tag{
+  color:var(--rose-dark);
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.8px;
+  font-weight:700;
 }
 
 .product-info h3{
   font-family:"Playfair Display",serif;
-  font-size:22px;
-  margin:10px 0 5px;
+  color:var(--dark);
+  font-size:24px;
+  margin:5px 0;
 }
 
 .product-info p{
   color:var(--muted);
-  font-size:11px;
-  min-height:52px;
+  font-size:13px;
+  min-height:42px;
 }
 
 .product-bottom{
+  margin-top:18px;
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  margin-top:17px;
+  justify-content:space-between;
+  gap:10px;
 }
 
 .price{
-  font-size:19px;
-  font-weight:700;
+  font-size:20px;
+  color:var(--dark);
+  font-weight:800;
+}
+
+.price small{
+  font-size:11px;
+  color:var(--muted);
+  font-weight:500;
 }
 
 .buy-btn{
-  border:none;
+  padding:11px 16px;
   background:var(--dark);
   color:white;
-  padding:10px 15px;
-  border-radius:25px;
+  border:0;
+  border-radius:11px;
   cursor:pointer;
-  font-size:10px;
+  font-size:12px;
   font-weight:700;
 }
 
-/* COLLECTIONS */
-
-.collections{
-  background:white;
-}
-
-.collection-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:20px;
-  margin-top:50px;
-}
-
-.collection{
-  padding:30px;
-  border:1px solid var(--line);
-  border-radius:20px;
-  background:var(--cream);
-  transition:.25s;
-}
-
-.collection:hover{
-  transform:translateY(-5px);
-  box-shadow:var(--shadow);
-}
-
-.collection-icon{
-  width:48px;
-  height:48px;
-  border-radius:50%;
-  background:var(--rose-light);
-  color:var(--rose);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:21px;
-}
-
-.collection h3{
-  font-family:"Playfair Display",serif;
-  font-size:22px;
-  margin:22px 0 7px;
-}
-
-.collection p{
-  font-size:11px;
-  color:var(--muted);
-  min-height:60px;
-}
-
-.collection a{
-  color:var(--rose);
-  font-size:11px;
-  font-weight:700;
-}
-
-/* WHY */
-
-.why{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:90px;
-  align-items:center;
-}
-
-.why-card{
-  min-height:480px;
-  border-radius:25px;
-  background:linear-gradient(145deg,#dfebe4,#f7e5e9);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.quote{
-  background:white;
-  width:310px;
-  padding:40px;
-  box-shadow:var(--shadow);
-  transform:rotate(-4deg);
-}
-
-.quote small{
-  color:var(--rose);
-  font-size:9px;
-  font-weight:700;
-  letter-spacing:2px;
-}
-
-.quote h3{
-  font-family:"Playfair Display",serif;
-  font-size:34px;
-  line-height:1.15;
-  margin-top:18px;
-}
+/* =========================
+   FEATURE
+========================= */
 
 .feature{
-  display:flex;
-  gap:18px;
-  padding:23px 0;
-  border-bottom:1px solid var(--line);
+  background:var(--cream2);
 }
 
-.feature-number{
-  color:var(--rose);
-  font-size:11px;
-  font-weight:700;
-}
-
-.feature h3{
-  font-family:"Playfair Display",serif;
-  font-size:20px;
-  margin-bottom:4px;
-}
-
-.feature p{
-  font-size:12px;
-  color:var(--muted);
-}
-
-/* HOW */
-
-.steps{
+.feature-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:24px;
-  margin-top:50px;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:70px;
 }
 
-.step{
-  padding:32px;
-  background:var(--rose-light);
-  border-radius:20px;
+.feature-art{
+  min-height:430px;
+  border-radius:34px;
+  background:linear-gradient(145deg,#f3dce1,#e3eee7);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
 }
 
-.step-number{
-  color:var(--rose);
-  font-weight:800;
-  font-size:12px;
+.feature-paper{
+  width:270px;
+  min-height:340px;
+  background:white;
+  border-radius:14px;
+  padding:30px;
+  box-shadow:var(--shadow);
+  transform:rotate(4deg);
 }
 
-.step h3{
+.feature-paper h3{
   font-family:"Playfair Display",serif;
-  font-size:23px;
-  margin:13px 0 7px;
+  font-size:29px;
+  color:var(--dark);
+  margin-bottom:20px;
 }
 
-.step p{
-  color:var(--muted);
-  font-size:11px;
-}
-
-/* CTA */
-
-.cta{
-  margin:0 5% 100px;
-  padding:85px 25px;
-  text-align:center;
-  border-radius:30px;
-  background:var(--dark);
-  color:white;
-}
-
-.cta h2{
-  font-family:"Playfair Display",serif;
-  font-size:55px;
-  margin:10px 0;
-}
-
-.cta h2 em{
-  color:#e6a2b2;
-  font-style:normal;
-}
-
-.cta p{
-  color:#d5c8cd;
-  max-width:500px;
-  margin:0 auto 27px;
+.check{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:14px 0;
   font-size:13px;
 }
 
-/* FAQ */
+.check span{
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:var(--sage);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:10px;
+}
+
+.feature-copy .eyebrow{
+  margin-bottom:15px;
+}
+
+.feature-copy h2{
+  font-family:"Playfair Display",serif;
+  color:var(--dark);
+  font-size:47px;
+  line-height:1.1;
+  margin-bottom:20px;
+}
+
+.feature-copy p{
+  color:var(--muted);
+  margin-bottom:25px;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-grid{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:70px;
+  align-items:center;
+}
+
+.about-card{
+  padding:40px;
+  border-radius:32px;
+  background:var(--dark);
+  color:white;
+  box-shadow:var(--shadow);
+}
+
+.about-card .quote{
+  font-family:"Playfair Display",serif;
+  font-size:34px;
+  line-height:1.25;
+  margin-bottom:20px;
+}
+
+.about-card p{
+  color:#d6cbd0;
+  font-size:14px;
+}
+
+.about-copy h2{
+  font-family:"Playfair Display",serif;
+  font-size:46px;
+  color:var(--dark);
+  line-height:1.1;
+  margin-bottom:18px;
+}
+
+.about-copy p{
+  color:var(--muted);
+  margin-bottom:18px;
+}
+
+/* =========================
+   FAQ
+========================= */
 
 .faq{
-  max-width:850px;
+  max-width:800px;
   margin:auto;
 }
 
-.faq details{
+.faq-item{
   border-bottom:1px solid var(--line);
-  padding:21px 0;
 }
 
-.faq summary{
-  cursor:pointer;
-  font-size:13px;
+.faq-question{
+  width:100%;
+  padding:22px 0;
+  border:0;
+  background:none;
+  text-align:left;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  font-size:15px;
   font-weight:700;
+  color:var(--dark);
+  cursor:pointer;
 }
 
-.faq p{
+.faq-answer{
+  display:none;
+  padding:0 0 22px;
   color:var(--muted);
-  font-size:12px;
-  padding-top:12px;
+  font-size:14px;
 }
 
-/* FOOTER */
+.faq-item.active .faq-answer{
+  display:block;
+}
+
+.faq-item.active .faq-question span{
+  transform:rotate(45deg);
+}
+
+.faq-question span{
+  transition:.2s;
+  font-size:22px;
+}
+
+/* =========================
+   NEWSLETTER
+========================= */
+
+.newsletter{
+  max-width:1050px;
+  margin:0 auto 90px;
+  padding:55px;
+  border-radius:35px;
+  background:linear-gradient(135deg,#f4dce2,#e4eee8);
+  text-align:center;
+}
+
+.newsletter h2{
+  font-family:"Playfair Display",serif;
+  color:var(--dark);
+  font-size:40px;
+  margin-bottom:10px;
+}
+
+.newsletter p{
+  color:var(--muted);
+  margin-bottom:25px;
+}
+
+.newsletter-form{
+  max-width:500px;
+  margin:auto;
+  display:flex;
+  gap:10px;
+}
+
+.newsletter-form input{
+  flex:1;
+  min-width:0;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:14px;
+  outline:none;
+  background:white;
+}
+
+/* =========================
+   FOOTER
+========================= */
 
 footer{
-  background:white;
-  border-top:1px solid var(--line);
-  padding:65px 0 30px;
+  background:var(--dark);
+  color:white;
+  padding:65px 24px 25px;
 }
 
 .footer-grid{
+  max-width:1200px;
+  margin:auto;
   display:grid;
-  grid-template-columns:2fr 1fr 1.5fr 1.2fr;
-  gap:40px;
+  grid-template-columns:1.4fr 1fr 1fr 1fr;
+  gap:50px;
 }
 
-.footer-brand h3{
+.footer-brand{
   font-family:"Playfair Display",serif;
-  font-size:26px;
+  font-size:28px;
+  margin-bottom:14px;
 }
 
-.footer-brand p{
-  color:var(--rose);
-  font-size:9px;
-  letter-spacing:1.5px;
+.footer-brand span{
+  color:#e3a5b4;
 }
 
-.footer-brand small{
+.footer-column h4{
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  margin-bottom:18px;
+}
+
+.footer-column a{
   display:block;
-  margin-top:10px;
-  color:var(--muted);
-  font-size:10px;
+  color:#cfc2c7;
+  font-size:13px;
+  margin:10px 0;
 }
 
-.footer-col{
+.footer-column a:hover{
+  color:white;
+}
+
+.footer-description{
+  color:#cfc2c7;
+  max-width:340px;
+  font-size:13px;
+}
+
+.footer-bottom{
+  max-width:1200px;
+  margin:50px auto 0;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,.12);
   display:flex;
-  flex-direction:column;
-  gap:8px;
+  justify-content:space-between;
+  gap:20px;
+  color:#a99da2;
   font-size:11px;
 }
 
-.footer-col strong{
-  margin-bottom:6px;
-}
+/* =========================
+   MODAL
+========================= */
 
-.footer-col a{
-  color:var(--muted);
-}
-
-.footer-col a:hover{
-  color:var(--rose);
-}
-
-.copyright{
-  border-top:1px solid var(--line);
-  margin-top:45px;
-  padding-top:22px;
-  color:var(--muted);
-  font-size:10px;
-}
-
-/* TOAST */
-
-#toast{
+.modal-overlay{
   position:fixed;
+  inset:0;
+  background:rgba(25,18,21,.55);
+  backdrop-filter:blur(8px);
+  z-index:2000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.modal-overlay.active{
+  display:flex;
+}
+
+.modal{
+  width:min(700px,100%);
+  max-height:90vh;
+  overflow:auto;
+  background:white;
+  border-radius:28px;
+  padding:30px;
+  position:relative;
+  box-shadow:0 30px 80px rgba(0,0,0,.25);
+}
+
+.close-modal{
+  position:absolute;
   right:20px;
-  bottom:20px;
-  z-index:9999;
+  top:20px;
+  width:38px;
+  height:38px;
+  border:0;
+  border-radius:50%;
+  background:#f5edef;
+  cursor:pointer;
+  font-size:20px;
+}
+
+.modal-cover{
+  min-height:220px;
+  border-radius:20px;
+  background:linear-gradient(135deg,#f2d9df,#e5eee8);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:25px;
+}
+
+.modal-cover-paper{
+  width:180px;
+  height:180px;
+  background:white;
+  border-radius:12px;
+  padding:20px;
+  box-shadow:var(--shadow2);
+}
+
+.modal h2{
+  font-family:"Playfair Display",serif;
+  color:var(--dark);
+  font-size:32px;
+  margin-bottom:8px;
+}
+
+.modal-description{
+  color:var(--muted);
+  font-size:14px;
+  margin-bottom:20px;
+}
+
+.modal-price{
+  font-size:25px;
+  font-weight:800;
+  color:var(--dark);
+  margin-bottom:20px;
+}
+
+.modal-features{
+  margin-bottom:25px;
+}
+
+.modal-features li{
+  list-style:none;
+  padding:7px 0;
+  font-size:13px;
+}
+
+.modal-features li:before{
+  content:"✓";
+  color:var(--rose);
+  font-weight:800;
+  margin-right:9px;
+}
+
+/* =========================
+   CART DRAWER
+========================= */
+
+.cart-drawer{
+  position:fixed;
+  right:-420px;
+  top:0;
+  width:min(400px,100%);
+  height:100%;
+  background:white;
+  z-index:2500;
+  box-shadow:-20px 0 60px rgba(0,0,0,.15);
+  transition:.35s;
+  padding:25px;
+}
+
+.cart-drawer.active{
+  right:0;
+}
+
+.cart-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px;
+}
+
+.cart-header h2{
+  font-family:"Playfair Display",serif;
+  color:var(--dark);
+}
+
+.cart-close{
+  border:0;
+  background:#f5edef;
+  border-radius:50%;
+  width:38px;
+  height:38px;
+  cursor:pointer;
+}
+
+.cart-item{
+  padding:15px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.cart-item strong{
+  color:var(--dark);
+  font-size:14px;
+}
+
+.cart-item p{
+  font-size:12px;
+  color:var(--muted);
+}
+
+.cart-total{
+  display:flex;
+  justify-content:space-between;
+  margin:25px 0;
+  font-weight:800;
+  color:var(--dark);
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast{
+  position:fixed;
+  bottom:25px;
+  left:50%;
+  transform:translate(-50%,20px);
   background:var(--dark);
   color:white;
-  padding:14px 18px;
+  padding:13px 18px;
   border-radius:12px;
-  font-size:12px;
+  font-size:13px;
   opacity:0;
-  transform:translateY(15px);
   pointer-events:none;
   transition:.3s;
+  z-index:5000;
 }
 
-#toast.show{
+.toast.show{
   opacity:1;
-  transform:translateY(0);
+  transform:translate(-50%,0);
 }
 
-/* MOBILE */
+/* =========================
+   RESPONSIVE
+========================= */
 
-@media(max-width:950px){
+@media(max-width:900px){
 
-  nav{
+  .desktop-nav{
     display:none;
   }
 
@@ -769,248 +1155,255 @@ footer{
     display:block;
   }
 
-  .nav-cta{
-    display:none;
-  }
-
   .hero{
     grid-template-columns:1fr;
-    text-align:center;
-    padding:55px 0;
+    padding-top:55px;
   }
 
-  .hero-description{
-    margin:auto;
+  .hero-card{
+    min-height:440px;
   }
 
-  .hero-buttons,
-  .hero-note{
-    justify-content:center;
-  }
-
-  .hero-art{
-    min-height:450px;
+  .categories{
+    grid-template-columns:1fr 1fr;
   }
 
   .products{
     grid-template-columns:1fr 1fr;
   }
 
-  .collection-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .why{
-    grid-template-columns:1fr;
-  }
-
-  .steps{
+  .feature-grid,
+  .about-grid{
     grid-template-columns:1fr;
   }
 
   .footer-grid{
     grid-template-columns:1fr 1fr;
   }
+
 }
 
 @media(max-width:600px){
 
-  .container{
-    width:90%;
+  .navbar{
+    height:70px;
+    padding:0 16px;
   }
 
-  .section{
-    padding:75px 0;
+  .logo-text{
+    font-size:22px;
   }
 
-  .section-heading{
-    display:block;
+  .logo-mark{
+    width:38px;
+    height:38px;
   }
 
-  .section-title{
-    font-size:40px;
-  }
-
-  .section-intro{
-    margin-top:18px;
+  .hero{
+    padding:45px 18px 55px;
+    gap:35px;
   }
 
   .hero h1{
-    font-size:50px;
+    font-size:47px;
   }
 
-  .circle.one{
-    width:330px;
-    height:330px;
+  .hero p{
+    font-size:15px;
   }
 
-  .paper{
-    width:250px;
-    height:350px;
+  .hero-card{
+    min-height:390px;
+    border-radius:28px;
   }
 
-  .paper h2{
-    font-size:27px;
-    margin-top:40px;
+  .mockup{
+    width:220px;
+    min-height:300px;
+    padding:22px;
   }
 
-  .float-card{
-    right:0;
+  .mockup-small{
+    right:15px;
+    bottom:35px;
+    width:145px;
   }
 
-  .brand-strip span{
-    display:none;
+  .trust-inner{
+    grid-template-columns:1fr 1fr;
   }
 
-  .brand-strip-inner{
-    justify-content:center;
+  .section{
+    padding:70px 18px;
   }
 
+  .section-head h2,
+  .feature-copy h2,
+  .about-copy h2{
+    font-size:36px;
+  }
+
+  .categories,
   .products{
     grid-template-columns:1fr;
   }
 
-  .collection-grid{
-    grid-template-columns:1fr;
+  .newsletter{
+    margin:0 18px 70px;
+    padding:35px 20px;
   }
 
-  .cta{
-    margin-bottom:70px;
-    padding:60px 20px;
+  .newsletter h2{
+    font-size:31px;
   }
 
-  .cta h2{
-    font-size:40px;
+  .newsletter-form{
+    flex-direction:column;
   }
 
   .footer-grid{
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:1fr;
+    gap:30px;
   }
 
-  .footer-brand{
-    grid-column:1/-1;
+  .footer-bottom{
+    flex-direction:column;
   }
+
+  .modal{
+    padding:22px;
+  }
+
 }
+
 </style>
 </head>
 
 <body>
 
+<!-- ================= HEADER ================= -->
+
 <header>
-  <div class="container navbar">
+
+  <div class="navbar">
 
     <a href="#home" class="logo">
-      <div class="logo-icon">♡</div>
-
-      <div>
-        <div class="logo-name">MOMNEST</div>
-        <span class="logo-tagline">
-          NOURISH • NURTURE • NEST
-        </span>
-      </div>
+      <div class="logo-mark">♡</div>
+      <div class="logo-text">Mom<span>Nest</span></div>
     </a>
 
-    <nav>
+    <nav class="desktop-nav">
       <a href="#home">Home</a>
       <a href="#shop">Shop</a>
-      <a href="#collections">Collections</a>
-      <a href="#about">About</a>
+      <a href="#categories">Collections</a>
+      <a href="#about">Our Story</a>
       <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
     </nav>
 
-    <a class="nav-cta" href="#shop">
-      Explore Shop →
-    </a>
+    <div class="nav-actions">
 
-    <button class="menu-btn" onclick="showMessage('Scroll down to explore MomNest ✨')">
-      ☰
-    </button>
+      <button class="cart-btn" onclick="openCart()" aria-label="Shopping cart">
+        🛍
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">
+        ☰
+      </button>
+
+    </div>
 
   </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+
+    <a href="#home" onclick="closeMenu()">Home</a>
+    <a href="#shop" onclick="closeMenu()">Shop</a>
+    <a href="#categories" onclick="closeMenu()">Collections</a>
+    <a href="#about" onclick="closeMenu()">Our Story</a>
+    <a href="#faq" onclick="closeMenu()">FAQ</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
+
+  </div>
+
 </header>
 
 
-<main id="home">
+<!-- ================= HERO ================= -->
 
-<!-- HERO -->
+<main>
 
-<section class="hero container">
+<section class="hero" id="home">
 
   <div>
 
-    <span class="eyebrow">
-      DIGITAL ESSENTIALS FOR MODERN MOMS
-    </span>
+    <div class="eyebrow">
+      ✦ Made for modern motherhood
+    </div>
 
     <h1>
-      More calm.<br>
-      More moments.<br>
-      <em>More you.</em>
+      Beautiful tools for
+      <em>beautiful moments.</em>
     </h1>
 
-    <p class="hero-description">
-      Beautifully designed planners, journals and kids'
-      activity resources created to bring a little more
-      ease, structure and joy to everyday family life.
+    <p>
+      Thoughtfully designed digital planners, journals and activity kits
+      created to make motherhood a little more organized, intentional
+      and joyful.
     </p>
 
     <div class="hero-buttons">
 
       <a href="#shop" class="btn btn-primary">
-        Shop MomNest
+        Explore the Collection →
       </a>
 
-      <a href="#collections" class="btn btn-outline">
-        Discover Collections
+      <a href="#about" class="btn btn-secondary">
+        Discover MomNest
       </a>
 
-    </div>
-
-    <div class="hero-note">
-      <span>✓ Instant Digital Access</span>
-      <span>✓ Printable PDFs</span>
-      <span>✓ Made for Modern Families</span>
     </div>
 
   </div>
 
 
-  <div class="hero-art">
+  <div class="hero-card">
 
-    <div class="circle one"></div>
-    <div class="circle two"></div>
+    <div class="mockup">
 
-    <div class="paper">
-
-      <small>MOMNEST</small>
-
-      <h2>
-        Little routines.<br>
-        Beautiful days.
-      </h2>
-
-      <div class="paper-line">
-        ✓ Morning routine
+      <div class="mockup-brand">
+        MOMNEST
       </div>
 
-      <div class="paper-line">
-        ✓ Baby routine
-      </div>
+      <h3>
+        My Little<br>
+        Moments
+      </h3>
 
-      <div class="paper-line">
-        ✓ Mama time
-      </div>
+      <div class="mock-line"></div>
+      <div class="mock-line short"></div>
 
-      <div class="paper-quote">
-        “Small steps<br>
-        still count.”
+      <div class="mock-boxes">
+        <div class="mock-box"></div>
+        <div class="mock-box"></div>
+        <div class="mock-box"></div>
+        <div class="mock-box"></div>
       </div>
 
     </div>
 
-    <div class="float-card">
-      Today's little win
-      <b>We made it through. ♥</b>
+    <div class="mockup-small">
+
+      <h4>
+        Weekly<br>
+        Mom Planner
+      </h4>
+
+      <div class="mock-line"></div>
+      <div class="mock-line short"></div>
+      <div class="mock-line"></div>
+
     </div>
 
   </div>
@@ -1018,48 +1411,133 @@ footer{
 </section>
 
 
-<!-- BRAND STRIP -->
+<!-- ================= TRUST ================= -->
 
-<div class="brand-strip">
+<section class="trust">
 
-  <div class="container brand-strip-inner">
+  <div class="trust-inner">
 
-    <strong>
-      Thoughtfully made for motherhood
-    </strong>
+    <div class="trust-item">
+      <strong>Instant Access</strong>
+      <span>Digital products delivered fast</span>
+    </div>
 
-    <span>PLANNERS</span>
-    <span>JOURNALS</span>
-    <span>KIDS ACTIVITIES</span>
-    <span>DIGITAL DOWNLOADS</span>
+    <div class="trust-item">
+      <strong>Thoughtfully Designed</strong>
+      <span>Created with moms in mind</span>
+    </div>
+
+    <div class="trust-item">
+      <strong>Easy to Use</strong>
+      <span>Simple, beautiful & practical</span>
+    </div>
+
+    <div class="trust-item">
+      <strong>Made with Love</strong>
+      <span>For everyday motherhood</span>
+    </div>
 
   </div>
 
-</div>
+</section>
 
 
-<!-- SHOP -->
+<!-- ================= CATEGORIES ================= -->
 
-<section class="section container" id="shop">
+<section class="section" id="categories">
 
-  <div class="section-heading">
+  <div class="section-head">
 
-    <div>
+    <div class="eyebrow">
+      Explore MomNest
+    </div>
 
-      <span class="eyebrow">
-        THE MOMNEST SHOP
-      </span>
+    <h2>
+      Little tools. Big difference.
+    </h2>
 
-      <h2 class="section-title">
-        Tools for your <em>everyday.</em>
-      </h2>
+    <p>
+      Discover thoughtfully designed digital resources for
+      everyday motherhood.
+    </p>
+
+  </div>
+
+
+  <div class="categories">
+
+    <div class="category">
+
+      <div class="category-icon">📝</div>
+
+      <h3>Planners</h3>
+
+      <p>
+        Organize routines, days and little moments with beautiful planners.
+      </p>
 
     </div>
 
-    <p class="section-intro">
-      Thoughtfully designed digital products that make
-      motherhood a little more organised, meaningful
-      and joyful.
+
+    <div class="category">
+
+      <div class="category-icon">📖</div>
+
+      <h3>Journals</h3>
+
+      <p>
+        Capture memories, thoughts and milestones you'll want to keep.
+      </p>
+
+    </div>
+
+
+    <div class="category">
+
+      <div class="category-icon">🎨</div>
+
+      <h3>Activity Kits</h3>
+
+      <p>
+        Screen-free ideas and printable activities for little ones.
+      </p>
+
+    </div>
+
+
+    <div class="category">
+
+      <div class="category-icon">👶</div>
+
+      <h3>Little Ones</h3>
+
+      <p>
+        Practical digital resources created around growing families.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= SHOP ================= -->
+
+<section class="section shop" id="shop">
+
+  <div class="section-head">
+
+    <div class="eyebrow">
+      The MomNest Collection
+    </div>
+
+    <h2>
+      Designed to make life feel lighter.
+    </h2>
+
+    <p>
+      Start with something beautiful and useful for your everyday routine.
     </p>
 
   </div>
@@ -1072,26 +1550,29 @@ footer{
 
     <article class="product">
 
-      <div class="product-image blush">
+      <div class="product-cover cover-pink">
 
-        <small>MOMNEST</small>
+        <div class="product-mini">
 
-        <strong>
-          Baby<br>
-          Routine<br>
-          Planner
-        </strong>
+          <small>MomNest</small>
 
-        <span>
-          Daily • Weekly • Calm
-        </span>
+          <h4>
+            Baby Routine<br>
+            Planner
+          </h4>
+
+          <div class="mini-line"></div>
+          <div class="mini-line"></div>
+          <div class="mini-line"></div>
+
+        </div>
 
       </div>
 
       <div class="product-info">
 
-        <span class="badge">
-          BESTSELLER
+        <span class="product-tag">
+          Best Seller
         </span>
 
         <h3>
@@ -1099,20 +1580,19 @@ footer{
         </h3>
 
         <p>
-          Feeding, sleep, diaper tracking and
-          daily mama check-ins — all in one simple planner.
+          A beautiful printable planner for feeding, sleep, routines and daily moments.
         </p>
 
         <div class="product-bottom">
 
-          <span class="price">
-            ₹149
-          </span>
+          <div class="price">
+            ₹149 <small>one-time</small>
+          </div>
 
           <button
             class="buy-btn"
-            onclick="buyProduct('Baby Routine Planner')">
-            Get it →
+            onclick="showProduct('Baby Routine Planner',149,'A beautiful printable planner for feeding, sleep, routines and daily moments.')">
+            Get It →
           </button>
 
         </div>
@@ -1126,47 +1606,49 @@ footer{
 
     <article class="product">
 
-      <div class="product-image sage">
+      <div class="product-cover cover-sage">
 
-        <small>MOMNEST</small>
+        <div class="product-mini">
 
-        <strong>
-          New Mom<br>
-          Starter<br>
-          Kit
-        </strong>
+          <small>MomNest</small>
 
-        <span>
-          Practical • Supportive
-        </span>
+          <h4>
+            Weekly Mom<br>
+            Planner
+          </h4>
+
+          <div class="mini-line"></div>
+          <div class="mini-line short"></div>
+          <div class="mini-line"></div>
+
+        </div>
 
       </div>
 
       <div class="product-info">
 
-        <span class="badge">
-          FAVOURITE
+        <span class="product-tag">
+          Productivity
         </span>
 
         <h3>
-          New Mom Starter Kit
+          Weekly Mom Planner
         </h3>
 
         <p>
-          A thoughtful digital toolkit for
-          routines, essentials and those first precious weeks.
+          Plan your week, priorities, meals, self-care and family moments.
         </p>
 
         <div class="product-bottom">
 
-          <span class="price">
-            ₹199
-          </span>
+          <div class="price">
+            ₹199 <small>one-time</small>
+          </div>
 
           <button
             class="buy-btn"
-            onclick="buyProduct('New Mom Starter Kit')">
-            Get it →
+            onclick="showProduct('Weekly Mom Planner',199,'Plan your week, priorities, meals, self-care and family moments.')">
+            Get It →
           </button>
 
         </div>
@@ -1180,47 +1662,49 @@ footer{
 
     <article class="product">
 
-      <div class="product-image lilac">
+      <div class="product-cover cover-gold">
 
-        <small>MOMNEST</small>
+        <div class="product-mini">
 
-        <strong>
-          Baby<br>
-          Milestone<br>
-          Journal
-        </strong>
+          <small>MomNest</small>
 
-        <span>
-          Memories • Firsts
-        </span>
+          <h4>
+            Little<br>
+            Activity Kit
+          </h4>
+
+          <div class="mini-line"></div>
+          <div class="mini-line"></div>
+          <div class="mini-line short"></div>
+
+        </div>
 
       </div>
 
       <div class="product-info">
 
-        <span class="badge">
-          KEEPSAKE
+        <span class="product-tag">
+          Kids
         </span>
 
         <h3>
-          Baby Milestone Journal
+          Little Activity Kit
         </h3>
 
         <p>
-          Capture first smiles, first steps,
-          favourite things and memories.
+          Printable activities designed to encourage creativity and screen-free play.
         </p>
 
         <div class="product-bottom">
 
-          <span class="price">
-            ₹199
-          </span>
+          <div class="price">
+            ₹249 <small>one-time</small>
+          </div>
 
           <button
             class="buy-btn"
-            onclick="buyProduct('Baby Milestone Journal')">
-            Get it →
+            onclick="showProduct('Little Activity Kit',249,'Printable activities designed to encourage creativity and screen-free play.')">
+            Get It →
           </button>
 
         </div>
@@ -1230,124 +1714,736 @@ footer{
     </article>
 
 
-    <!-- PRODUCT 4 -->
+  </div>
 
-    <article class="product">
+</section>
 
-      <div class="product-image peach">
 
-        <small>MOMNEST</small>
+<!-- ================= FEATURE ================= -->
 
-        <strong>
-          Kids<br>
-          Activity<br>
-          Pack
-        </strong>
+<section class="feature">
 
-        <span>
-          Play • Learn • Create
-        </span>
+  <div class="section">
 
-      </div>
+    <div class="feature-grid">
 
-      <div class="product-info">
+      <div class="feature-art">
 
-        <span class="badge">
-          AGES 2–5
-        </span>
+        <div class="feature-paper">
 
-        <h3>
-          Kids Activity Pack
-        </h3>
+          <h3>
+            A calmer week starts here.
+          </h3>
 
-        <p>
-          Creative printable activities for
-          little hands and curious minds.
-        </p>
+          <div class="check">
+            <span>✓</span>
+            Plan the week
+          </div>
 
-        <div class="product-bottom">
+          <div class="check">
+            <span>✓</span>
+            Track routines
+          </div>
 
-          <span class="price">
-            ₹149
-          </span>
+          <div class="check">
+            <span>✓</span>
+            Make time for yourself
+          </div>
 
-          <button
-            class="buy-btn"
-            onclick="buyProduct('Kids Activity Pack')">
-            Get it →
-          </button>
+          <div class="check">
+            <span>✓</span>
+            Capture little moments
+          </div>
 
         </div>
 
       </div>
 
-    </article>
 
+      <div class="feature-copy">
 
-    <!-- PRODUCT 5 -->
-
-    <article class="product">
-
-      <div class="product-image gold-bg">
-
-        <small>MOMNEST</small>
-
-        <strong>
-          Mom's<br>
-          Self-Care<br>
-          Journal
-        </strong>
-
-        <span>
-          Pause • Reflect • Reset
-        </span>
-
-      </div>
-
-      <div class="product-info">
-
-        <span class="badge">
-          FOR MOMS
-        </span>
-
-        <h3>
-          Mom's Self-Care Journal
-        </h3>
-
-        <p>
-          Gentle prompts to help moms pause,
-          reflect and create a little time for themselves.
-        </p>
-
-        <div class="product-bottom">
-
-          <span class="price">
-            ₹149
-          </span>
-
-          <button
-            class="buy-btn"
-            onclick="buyProduct('Mom Self-Care Journal')">
-            Get it →
-          </button>
-
+        <div class="eyebrow">
+          Why MomNest?
         </div>
 
+        <h2>
+          Because motherhood deserves beautiful systems.
+        </h2>
+
+        <p>
+          MomNest products are designed to be simple enough for busy days
+          and beautiful enough to make you want to use them.
+        </p>
+
+        <p>
+          Download, print or use digitally — whenever and wherever
+          motherhood takes you.
+        </p>
+
+        <a href="#shop" class="btn btn-primary">
+          Shop MomNest →
+        </a>
+
       </div>
 
-    </article>
+    </div>
+
+  </div>
+
+</section>
 
 
-    <!-- PRODUCT 6 -->
+<!-- ================= ABOUT ================= -->
 
-    <article class="product">
+<section class="section" id="about">
 
-      <div class="product-image blue">
+  <div class="about-grid">
 
-        <small>MOMNEST</small>
+    <div class="about-card">
 
-        <strong>
-          Family<br>
-          Planner<br>
-          Bundle
-  
+      <div class="quote">
+        “Motherhood is made of thousands of little moments.”
+      </div>
+
+      <p>
+        MomNest was created to make those moments feel a little
+        more organized, intentional and memorable.
+      </p>
+
+    </div>
+
+
+    <div class="about-copy">
+
+      <div class="eyebrow">
+        Our Story
+      </div>
+
+      <h2>
+        Made for moms, inspired by real life.
+      </h2>
+
+      <p>
+        We believe useful things can also be beautiful.
+        That's why every MomNest digital product is designed
+        with simplicity, warmth and everyday motherhood in mind.
+      </p>
+
+      <p>
+        From planning the week to creating activities for little ones,
+        MomNest is here to help make everyday life a little easier.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= FAQ ================= -->
+
+<section class="section" id="faq">
+
+  <div class="section-head">
+
+    <div class="eyebrow">
+      Need to know
+    </div>
+
+    <h2>
+      Frequently asked questions
+    </h2>
+
+  </div>
+
+
+  <div class="faq">
+
+
+    <div class="faq-item">
+
+      <button class="faq-question" onclick="toggleFaq(this)">
+        How will I receive my product?
+        <span>+</span>
+      </button>
+
+      <div class="faq-answer">
+        After successful payment, your digital product will be made available
+        for download. We are building automatic email delivery for every purchase.
+      </div>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Are MomNest products physical products?
+        <span>+</span>
+      </button>
+
+      <div class="faq-answer">
+        No. MomNest products are digital downloads such as planners,
+        journals and printable activity kits.
+      </div>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Can I print the planners?
+        <span>+</span>
+      </button>
+
+      <div class="faq-answer">
+        Yes. Products will be designed for easy home printing and
+        convenient digital use.
+      </div>
+
+    </div>
+
+
+    <div class="faq-item">
+
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Will I get instant access after payment?
+        <span>+</span>
+      </button>
+
+      <div class="faq-answer">
+        Yes. Our checkout system is being designed for automatic
+        digital delivery immediately after successful payment.
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- ================= NEWSLETTER ================= -->
+
+<section class="newsletter" id="contact">
+
+  <h2>
+    Little things are coming.
+  </h2>
+
+  <p>
+    Join the MomNest list for new products, ideas and special launches.
+  </p>
+
+  <form class="newsletter-form" onsubmit="subscribe(event)">
+
+    <input
+      type="email"
+      id="emailInput"
+      placeholder="Your email address"
+      required
+    >
+
+    <button class="btn btn-primary" type="submit">
+      Join MomNest
+    </button>
+
+  </form>
+
+</section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+  <div class="footer-grid">
+
+    <div>
+
+      <div class="footer-brand">
+        Mom<span>Nest</span>
+      </div>
+
+      <p class="footer-description">
+        Thoughtfully designed digital products for modern moms,
+        growing families and little ones.
+      </p>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <h4>Shop</h4>
+
+      <a href="#shop">Planners</a>
+      <a href="#shop">Journals</a>
+      <a href="#shop">Activity Kits</a>
+      <a href="#shop">Little Ones</a>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <h4>Explore</h4>
+
+      <a href="#about">Our Story</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <h4>Follow</h4>
+
+      <a href="https://www.instagram.com/momnest.co.in/" target="_blank">
+        Instagram
+      </a>
+
+      <a href="mailto:momnest.co.in@gmail.com">
+        Email Us
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <div class="footer-bottom">
+
+    <span>
+      © 2026 MomNest. All rights reserved.
+    </span>
+
+    <span>
+      Made with ♡ for modern motherhood.
+    </span>
+
+  </div>
+
+</footer>
+
+
+<!-- ================= PRODUCT MODAL ================= -->
+
+<div class="modal-overlay" id="productModal">
+
+  <div class="modal">
+
+    <button class="close-modal" onclick="closeProduct()">
+      ×
+    </button>
+
+    <div class="modal-cover">
+
+      <div class="modal-cover-paper">
+
+        <small style="color:#c8798c;font-weight:700;">
+          MOMNEST
+        </small>
+
+        <h3
+          id="modalMiniTitle"
+          style="font-family:'Playfair Display',serif;color:#30262b;margin-top:18px;">
+          Product
+        </h3>
+
+      </div>
+
+    </div>
+
+    <h2 id="modalTitle">
+      Product
+    </h2>
+
+    <p class="modal-description" id="modalDescription">
+      Product description.
+    </p>
+
+    <div class="modal-price">
+      ₹<span id="modalPrice">0</span>
+    </div>
+
+    <ul class="modal-features">
+
+      <li>Instant digital product</li>
+      <li>Beautifully designed PDF</li>
+      <li>Easy to print and use</li>
+      <li>Created for modern moms</li>
+
+    </ul>
+
+    <button
+      class="btn btn-primary"
+      style="width:100%;"
+      onclick="startCheckout()">
+
+      Continue to secure checkout →
+
+    </button>
+
+    <p
+      style="font-size:11px;color:#999;text-align:center;margin-top:12px;">
+      Secure payment powered by Razorpay
+    </p>
+
+  </div>
+
+</div>
+
+
+<!-- ================= CART ================= -->
+
+<div class="cart-drawer" id="cartDrawer">
+
+  <div class="cart-header">
+
+    <h2>Your Bag</h2>
+
+    <button class="cart-close" onclick="closeCart()">
+      ×
+    </button>
+
+  </div>
+
+  <div id="cartItems">
+
+    <p style="color:#999;font-size:13px;">
+      Your bag is empty.
+    </p>
+
+  </div>
+
+  <div class="cart-total">
+
+    <span>Total</span>
+
+    <span>
+      ₹<span id="cartTotal">0</span>
+    </span>
+
+  </div>
+
+  <button
+    class="btn btn-primary"
+    style="width:100%;"
+    onclick="checkoutCart()">
+
+    Checkout →
+
+  </button>
+
+</div>
+
+
+<!-- ================= TOAST ================= -->
+
+<div class="toast" id="toast">
+  Done!
+</div>
+
+
+<script>
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+function toggleMenu(){
+
+  document
+    .getElementById("mobileMenu")
+    .classList.toggle("active");
+
+}
+
+function closeMenu(){
+
+  document
+    .getElementById("mobileMenu")
+    .classList.remove("active");
+
+}
+
+
+/* =========================
+   FAQ
+========================= */
+
+function toggleFaq(button){
+
+  const item = button.parentElement;
+
+  item.classList.toggle("active");
+
+}
+
+
+/* =========================
+   PRODUCT DATA
+========================= */
+
+let selectedProduct = null;
+
+let cart = [];
+
+
+/* =========================
+   PRODUCT MODAL
+========================= */
+
+function showProduct(name,price,description){
+
+  selectedProduct = {
+    name:name,
+    price:price,
+    description:description
+  };
+
+  document.getElementById("modalTitle").textContent = name;
+
+  document.getElementById("modalMiniTitle").textContent = name;
+
+  document.getElementById("modalPrice").textContent = price;
+
+  document.getElementById("modalDescription").textContent = description;
+
+  document
+    .getElementById("productModal")
+    .classList.add("active");
+
+}
+
+
+function closeProduct(){
+
+  document
+    .getElementById("productModal")
+    .classList.remove("active");
+
+}
+
+
+/* =========================
+   CHECKOUT PLACEHOLDER
+========================= */
+
+function startCheckout(){
+
+  if(!selectedProduct){
+    return;
+  }
+
+  /*
+    IMPORTANT:
+
+    Razorpay payment verification and automatic PDF delivery
+    must be handled by a secure backend.
+
+    DO NOT put Razorpay Secret Key inside this HTML file.
+
+    In the next step we will connect this button to:
+    
+    1. Razorpay Checkout
+    2. Secure payment verification
+    3. Product/PDF mapping
+    4. Automatic email delivery
+    5. Secure download link
+  */
+
+  closeProduct();
+
+  showToast(
+    "Secure checkout setup will be connected next."
+  );
+
+}
+
+
+/* =========================
+   CART
+========================= */
+
+function addToCart(product){
+
+  cart.push(product);
+
+  updateCart();
+
+  showToast(
+    product.name + " added to your bag."
+  );
+
+}
+
+
+function updateCart(){
+
+  document.getElementById("cartCount").textContent = cart.length;
+
+  const container =
+    document.getElementById("cartItems");
+
+  if(cart.length === 0){
+
+    container.innerHTML =
+      '<p style="color:#999;font-size:13px;">Your bag is empty.</p>';
+
+    document.getElementById("cartTotal").textContent = "0";
+
+    return;
+
+  }
+
+  let total = 0;
+
+  container.innerHTML = "";
+
+  cart.forEach((item,index)=>{
+
+    total += item.price;
+
+    const div =
+      document.createElement("div");
+
+    div.className = "cart-item";
+
+    div.innerHTML = `
+      <strong>${item.name}</strong>
+      <p>₹${item.price}</p>
+      <button
+        onclick="removeCartItem(${index})"
+        style="border:0;background:none;color:#c8798c;cursor:pointer;font-size:11px;">
+        Remove
+      </button>
+    `;
+
+    container.appendChild(div);
+
+  });
+
+  document.getElementById("cartTotal").textContent = total;
+
+}
+
+
+function removeCartItem(index){
+
+  cart.splice(index,1);
+
+  updateCart();
+
+}
+
+
+function openCart(){
+
+  document
+    .getElementById("cartDrawer")
+    .classList.add("active");
+
+}
+
+
+function closeCart(){
+
+  document
+    .getElementById("cartDrawer")
+    .classList.remove("active");
+
+}
+
+
+function checkoutCart(){
+
+  if(cart.length === 0){
+
+    showToast("Your bag is empty.");
+
+    return;
+
+  }
+
+  showToast(
+    "Secure checkout will be connected next."
+  );
+
+}
+
+
+/* =========================
+   NEWSLETTER
+========================= */
+
+function subscribe(event){
+
+  event.preventDefault();
+
+  const email =
+    document.getElementById("emailInput").value;
+
+  if(!email){
+    return;
+  }
+
+  document.getElementById("emailInput").value = "";
+
+  showToast(
+    "Welcome to MomNest ♡"
+  );
+
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+function showToast(message){
+
+  const toast =
+    document.getElementById("toast");
+
+  toast.textContent = message;
+
+  toast.classList.add("show");
+
+  setTimeout(()=>{
+
+    toast.classList.remove("show");
+
+  },3000);
+
+}
+
+
+/* =========================
+   MODAL OUTSIDE CLICK
+========================= */
+
+document
+  .getElementById("productModal")
+  .addEventListener("click",function(event){
+
+    if(event.target === this){
+
+      closeProduct();
+
+    }
+
+  });
+
+
+</script>
+
+</body>
+</html>
